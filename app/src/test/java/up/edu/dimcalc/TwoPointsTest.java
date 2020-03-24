@@ -25,8 +25,6 @@ public class TwoPointsTest {
         TwoPoints points = new TwoPoints();
         points.setPoint(0, 2,7);
         points.setPoint(1,-1029, 8754);
-        Point p1 = new Point(2 , 7);
-        Point p2 = new Point(-1029, 8754);
         assertEquals(2, points.getPoint(0).x);
         assertEquals(-1029, points.getPoint(1).x);
         assertEquals(8754, points.getPoint(1).y);
@@ -72,13 +70,13 @@ public class TwoPointsTest {
     @Test
     public void copy() {
         TwoPoints points = new TwoPoints();
-        points.setOrigin(0);
+        points.setPoint(0, 1, 2);
         points.setPoint(1, -13,4);
-        points.copy(1,0);
+        points.copy(0,1);
         assertEquals(points.getPoint(1).x, points.getPoint(0).x);
         assertEquals(points.getPoint(0).y, points.getPoint(1).y);
-        points.setPoint(1, -12, 4);
-        assertNotEquals(points.getPoint(1).y, points.getPoint(0).y);
+        points.setPoint(1, -7, 4);
+        assertNotEquals(points.getPoint(1).x, points.getPoint(0).x);
 
         //this fails because it sets one object to be equivalent to the other instead of just copying its variables over, this means they will
         //continue to change together even if you only want to change one of them.
@@ -109,10 +107,10 @@ public class TwoPointsTest {
         points.setPoint(0, 7, 3);
         points.setPoint(1, 234, -3);
         double result = 0.0;
-        double xDiff = 7 - 3;
-        double yDiff = 234 + 3;
+        int xDiff = 7 - 234;
+        int yDiff = 3 + 3;
         result = yDiff / xDiff;
-        assertEquals(result, points.slope(), .01);
+        assertEquals(result, points.slope(), .1);
         points.setPoint(0, 7, 3);
         points.setPoint(1, 456, -7);
         xDiff = 7 - 456;
