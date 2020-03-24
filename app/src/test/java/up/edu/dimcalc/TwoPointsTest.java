@@ -80,7 +80,8 @@ public class TwoPointsTest {
         points.setPoint(1, -12, 4);
         assertNotEquals(points.getPoint(1).y, points.getPoint(0).y);
 
-        //this fails because it sets one object to be equivalent to the other instead of just copying its variables over
+        //this fails because it sets one object to be equivalent to the other instead of just copying its variables over, this means they will
+        //continue to change together even if you only want to change one of them.
     }
 
     @Test
