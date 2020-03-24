@@ -91,14 +91,14 @@ public class TwoPointsTest {
         int xDiff = 12 - 6;
         int yDiff = 3 - 4;
         result = Math.sqrt(xDiff*xDiff + yDiff*yDiff);
-        assertEquals(result, points.distance(), .001);
+        assertEquals((int)result, points.distance());
         points.setPoint(0, 34, 6);
         points.setPoint(1, -2345, - 4);
         result = 0.0;
         xDiff = 34 + 2345;
         yDiff = 6 + 4;
         result = Math.sqrt(xDiff*xDiff + yDiff*yDiff);
-        assertEquals(result, points.distance(), .001);
+        assertEquals((int)result, points.distance());
     }
 
     @Test
@@ -111,12 +111,16 @@ public class TwoPointsTest {
         int yDiff = 3 + 3;
         result = yDiff / xDiff;
         assertEquals(result, points.slope(), .1);
+
         points.setPoint(0, 7, 3);
         points.setPoint(1, 456, -7);
         xDiff = 7 - 456;
         yDiff = 3 + 7;
         result = yDiff / xDiff;
-        assertEquals(result, points.slope(), .001);
+        assertEquals(result, points.slope(), .1);
+
+        points.setPoint(0, 456, -7);
+        assertEquals(0.0, points.slope(), .1);
 
         //this throws an error because the slope method is flawed and uses xDiff/yDiff instead of yDiff/xDiff
     }

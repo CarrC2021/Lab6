@@ -47,12 +47,12 @@ public class TwoPoints {
     }
 
     /** calculates the distance between the two points rounded to the nearest integer */
-    public double distance() {
+    public int distance() {
         double result = 0.0;
         int xDiff = points[0].x - points[1].x;
         int yDiff = points[0].y - points[1].y;
         result = Math.sqrt(xDiff*xDiff + yDiff*yDiff);
-        return result;
+        return (int)result;
     }
 
     /** calculates the slope of a line passing through the two points
@@ -60,7 +60,7 @@ public class TwoPoints {
      * @return the slope or 0 if the points are equal */
     public double slope() {
         double result = 0.0;
-        if (points[0] == points[1]) {
+        if (points[0].x == (points[1]).x && points[0].y == (points[1]).y) {
             return result;
         }
 
